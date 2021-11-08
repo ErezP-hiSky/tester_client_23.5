@@ -40,7 +40,7 @@ function Management() {
 
   return (
     <div >
-        <h1>Management Page</h1>
+        <h3>Status Report - dashboard</h3>
         <div className="sidenav">
           <button href="#" className="sidenav__about" 
             onClick={() => hideComponent("showAll")}>All</button>

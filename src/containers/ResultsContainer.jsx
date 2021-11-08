@@ -24,21 +24,29 @@ import FLGeneralRes from '../components/tests_results/FullLinkGeneral.jsx';
 import P1dbPwrGraph from '../components/tests_results/p1dbPwrRes.jsx';
 import Spinner from '../components/layout/Spinner';
 import axios from 'axios';
+import GpsResult from '../components/tests_results/GpsResult';
 
 
 function Results() {
     const history = useHistory();    
     const formData = history.location.state;
     const unitSN = formData.techUnitSN;
-    
+
+    const [isDataFlag, setIsDataFlag] = useState(false);
     const [idFound, setIdFound] = useState([]);
+    const [allRes, setAllRes] = useState([]);    
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
-            const res = await axios.get(`/general-test-data/findbyUnitSN/${unitSN}`);            
-            setIdFound(res.data[0]['_id']);
+            const { data } = await axios.get(`/general-test-data/findbyUnitSN/${unitSN}`);            
+            // console.log(data)
+            if (data.length) {                
+                setAllRes(data);
+                setIdFound(data[0]['_id'])
+                setIsDataFlag(true);
+            }
             setLoading(false);
         };
         fetchData();
@@ -65,7 +73,8 @@ function Results() {
         showTest16: false,
         showTest17: false,
         showTest18: false,
-        showTest19: false
+        showTest19: false,
+        showTest20: false
     });
 
     function hideComponent(name) {
@@ -128,11 +137,14 @@ function Results() {
             case "showTest19":
                 setState({ showTest19: !state.showTest19 });
                 break;
+            case "showTest20":
+                setState({ showTest20: !state.showTest20 });
+                break;
             default:
                 console.log("error name");
                 break;
         }
-        window.scrollTo(0, document.body.scrollHeight);
+        // window.scrollTo(0, document.body.scrollHeight);
     }
 
     const {
@@ -154,174 +166,202 @@ function Results() {
         showTest16,
         showTest17,
         showTest18,
-        showTest19
+        showTest19,
+        showTest20
     } = state;
     
     if (loading) {
         return <Spinner/>
+    }
+    else if (!isDataFlag) {
+        return <h3>No Data Found Or test Not Full</h3>    
     } else {
         return (
-            <div className="all-results">
-                <p className="m-top-2">Unit SN - <strong>{unitSN}</strong> - results page</p>
-                <img className="gear-img" src={gear} alt="result-gear"/>
-                <div className="hide-btns">
-                    <button className="btn1" onClick={() => hideComponent("showTest1")}>
-                        <span>Click to general test details</span>
-                    </button>
-                    <button className="btn2" onClick={() => hideComponent("showTest2")}>
-                        <span>Click to Ambient Temperature</span>
-                    </button>
-                    <button className="btn3" onClick={() => hideComponent("showTest3")}>
-                        <span>Click to Current Consumption</span>
-                    </button>
-                    <button className="btn4" onClick={() => hideComponent("showTest4")}>
-                        <span>Click to Manufacturer Details</span>
-                    </button>
-                    <button className="btn5" onClick={() => hideComponent("showTest5")}>
-                        <span>Click to Data user input in ui</span>
-                    </button>
-                    <button className="btn6" onClick={() => hideComponent("showTest6")}>
-                        <span>Click to Led status</span>
-                    </button>
-                    <button className="btn7" onClick={() => hideComponent("showTest7")}>
-                        <span>Click to PIC version</span>
-                    </button>
-                    <button className="btn8" onClick={() => hideComponent("showTest8")}>
-                        <span>Click to Ping Status</span>
-                    </button>
-                    <button className="btn9" onClick={() => hideComponent("showTest9")}>
-                        <span>Click to First prep results</span>
-                    </button>
-                    <button className="btn10" onClick={() => hideComponent("showTest10")}>
-                        <span>Click to Temperature Test Results</span>
-                    </button>
-                    <button className="btn11" onClick={() => hideComponent("showTest11")}>
-                        <span>Click to temperature changes</span>
-                    </button>
-                    <button className="btn12" onClick={() => hideComponent("showTest12")}>
-                        <span>Click to Imu Gps</span>
-                    </button>
-                    <button className="btn13" onClick={() => hideComponent("showTest13")}>
-                        <span>Click to Tcxo Calibration</span>
-                    </button>
-                    <button className="btn14" onClick={() => hideComponent("showTest14")}>
-                        <span>Click to p1db results</span>
-                    </button>
-                    <button className="btn15" onClick={() => hideComponent("showTest15")}>
-                        <span>Click to Full Link DownLink</span>
-                    </button>
-                    <button className="btn16" onClick={() => hideComponent("showTest16")}>
-                        <span>Click to Full Link UpLink</span>
-                    </button>
-                    <button className="btn17" onClick={() => hideComponent("showTest17")}>
-                        <span>Click to FL cross poll</span>
-                    </button>
-                    <button className="btn18" onClick={() => hideComponent("showTest18")}>
-                        <span>Click to FL General Results</span>
-                    </button>
-
-                    <button className="btn19" onClick={() => hideComponent("showTest19")}>
-                        <span>Click to p1db graphs</span>
-                    </button>
+            <div className="results_wrapper">
+                <div className="results_header results_box">
+                    <p className="m-top-2 ">Unit SN - <strong>{unitSN}</strong> - results page</p>
+                    {allRes.length > 1 && <ul>
+                            {allRes.map((item, i) => 
+                                <li key={i} className="idFoundBtn">
+                                    <button onClick={()=>setIdFound(item['_id'])}>
+                                        click for result {i + 1} - from date {item['Test_Date'].split('T')[0]}
+                                        {' '} and time {item['Test_Date'].split('T')[1].slice(0, -5)}
+                                    </button>
+                                </li>
+                            )}                    
+                        </ul>}
                 </div>
+                <div className="results_sidebar back-black">    
+                    <img className="gear-img" src={gear} alt="result-gear"/>
+                    <div className="hide-btns">
+                        <button onClick={() => hideComponent("showTest1")}>
+                            <span>general test details</span>
+                        </button>
+                        <button onClick={() => hideComponent("showTest2")}>
+                            <span>Ambient Temperature</span>
+                        </button>
+                        <button onClick={() => hideComponent("showTest3")}>
+                            <span>Current Consumption</span>
+                        </button>
+                        <button onClick={() => hideComponent("showTest4")}>
+                            <span>Manufacturer Details</span>
+                        </button>
+                        <button onClick={() => hideComponent("showTest5")}>
+                            <span>User input in ui & MAC</span>
+                        </button>
+                        <button onClick={() => hideComponent("showTest6")}>
+                            <span>Led status</span>
+                        </button>
+                        <button onClick={() => hideComponent("showTest7")}>
+                            <span>PIC version</span>
+                        </button>
+                        <button onClick={() => hideComponent("showTest8")}>
+                            <span>Ping Status</span>
+                        </button>
+                        <button onClick={() => hideComponent("showTest9")}>
+                            <span>First prep</span>
+                        </button>
+                        <button onClick={() => hideComponent("showTest10")}>
+                            <span>Temperature Test</span>
+                        </button>
+                        <button onClick={() => hideComponent("showTest11")}>
+                            <span>temperature changes</span>
+                        </button>
+                        <button onClick={() => hideComponent("showTest12")}>
+                            <span>Imu limits</span>
+                        </button>
+                        <button onClick={() => hideComponent("showTest13")}>
+                            <span>Tcxo Calibration</span>
+                        </button>
+                        <button onClick={() => hideComponent("showTest14")}>
+                            <span>p1db </span>
+                        </button>
+                        <button onClick={() => hideComponent("showTest20")}>
+                            <span>GPS </span>
+                        </button>
+                        <button onClick={() => hideComponent("showTest15")}>
+                            <span>Full Link DownLink</span>
+                        </button>
+                        <button onClick={() => hideComponent("showTest16")}>
+                            <span>Full Link UpLink</span>
+                        </button>
+                        <button onClick={() => hideComponent("showTest17")}>
+                            <span>Full Link cross poll</span>
+                        </button>
+                        <button onClick={() => hideComponent("showTest18")}>
+                            <span>Full Link General Results</span>
+                        </button>
 
-                <h2>The Results are: </h2>
-                {showTest1 &&
-                <GeneralTestDataRes 
-                    resultId={idFound}
-                />}
-                
-                {showTest2 &&
-                    <AmbientTempRes 
-                    resultId={idFound}
-                />}
-                
-                {showTest3 &&
-                    <CurrentConsumption 
-                    resultId={idFound}
-                />}
-                
-                {showTest4 &&
-                    <ManDetailsDataRes 
-                    resultId={idFound}
-                />}
-                
-                {showTest5 &&
-                    <GuiDataRes 
-                    resultId={idFound}
-                />}
-                
-                {showTest6 &&
-                    <LedRes 
-                    resultId={idFound}
-                />}
-                
-                {showTest7 &&
-                    <PicVersionRes 
-                    resultId={idFound}
-                />}
-                
-                {showTest8 &&
-                    <PingStatRes 
-                    resultId={idFound}
-                />}
-                
-                {showTest9 &&
-                    <FirstPrepStatRes 
-                    resultId={idFound}
+                        <button onClick={() => hideComponent("showTest19")}>
+                            <span>p1db graphs</span>
+                        </button>
+                    </div>
+                </div>
+                <div className="results_content results_box">
+                    <h2>The Results are: </h2>
+                    
+                    {showTest1 &&
+                    <GeneralTestDataRes 
+                        resultId={idFound}
                     />}
-                
-                {showTest10 &&
-                    <TempTestRes 
-                    resultId={idFound}
+                    
+                    {showTest2 &&
+                        <AmbientTempRes 
+                        resultId={idFound}
                     />}
-                
-                {showTest11 &&
-                    <TempChangesRes 
-                    resultId={idFound}
+                    
+                    {showTest3 &&
+                        <CurrentConsumption 
+                        resultId={idFound}
                     />}
-                
-                {showTest12 &&
-                    <ImuGpsRes 
-                    resultId={idFound}
+                    
+                    {showTest4 &&
+                        <ManDetailsDataRes 
+                        resultId={idFound}
                     />}
-                
-                {showTest13 &&
-                    <TcxoCalRes 
-                    resultId={idFound}
+                    
+                    {showTest5 &&
+                        <GuiDataRes 
+                        resultId={idFound}
                     />}
-                
-                {showTest14 &&
-                    <P1dbRes 
-                    resultId={idFound}
+                    
+                    {showTest6 &&
+                        <LedRes 
+                        resultId={idFound}
                     />}
-                
-                {showTest15 &&
-                    <FLdLRes 
-                    resultId={idFound}
+                    
+                    {showTest7 &&
+                        <PicVersionRes 
+                        resultId={idFound}
                     />}
-                
-                {showTest16 &&
-                    <FLuLRes 
-                    resultId={idFound}
+                    
+                    {showTest8 &&
+                        <PingStatRes 
+                        resultId={idFound}
                     />}
-                
-                {showTest17 &&
-                    <FLCrossPollRes 
-                    resultId={idFound}
-                    />}
-                
-                {showTest18 &&
-                    <FLGeneralRes 
-                    resultId={idFound}
-                    />}
-                
-                {showTest19 &&
-                    <P1dbPwrGraph 
-                    resultId={idFound}
-                    />}
-                
-                <br />
+                    
+                    {showTest9 &&
+                        <FirstPrepStatRes 
+                        resultId={idFound}
+                        />}
+                    
+                    {showTest10 &&
+                        <TempTestRes 
+                        resultId={idFound}
+                        />}
+                    
+                    {showTest11 &&
+                        <TempChangesRes 
+                        resultId={idFound}
+                        />}
+                    
+                    {showTest12 &&
+                        <ImuGpsRes 
+                        resultId={idFound}
+                        />}
+                    
+                    {showTest13 &&
+                        <TcxoCalRes 
+                        resultId={idFound}
+                        />}
+                    
+                    {showTest14 &&
+                        <P1dbRes 
+                        resultId={idFound}
+                        />}
+                    
+                    {showTest15 &&
+                        <FLdLRes 
+                        resultId={idFound}
+                        />}
+                    
+                    {showTest16 &&
+                        <FLuLRes 
+                        resultId={idFound}
+                        />}
+                    
+                    {showTest17 &&
+                        <FLCrossPollRes 
+                        resultId={idFound}
+                        />}
+                    
+                    {showTest18 &&
+                        <FLGeneralRes 
+                        resultId={idFound}
+                        />}
+                    
+                    {showTest19 &&
+                        <P1dbPwrGraph 
+                        resultId={idFound}
+                        />}
+
+                    {showTest20 &&
+                        <GpsResult 
+                        resultId={idFound}
+                        />}
+                    
+                    <br />
+                </div>                
             </div>
         );
     }

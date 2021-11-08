@@ -1,16 +1,31 @@
 
   
 header {
-    background-color: #bc1414;
+    background-color: $color-primary;
+    // #bc1414;
     margin: auto -1.6rem;
-    padding: 1.6rem 3.2rem;
+    padding: 0.6rem 1.2rem;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
   
   
     & h1 {
-        color: $color-primary;
-        font-family: "McLaren", cursive;
+        color: #505050;
+        font-family: "Poppins", sans-serif;
         font-weight: 200;
+    }
+    
+}
+
+.header_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    &__logo {
+        justify-self: start;
+    }
+    &__text {
+        justify-self: center;
+        align-self: center;
+        font-weight: 600;
     }
 }
   

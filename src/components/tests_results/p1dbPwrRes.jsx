@@ -27,7 +27,7 @@ function P1dbPwrGraph({ resultId }) {
 
     return (
         <div>
-            <h1>P1 db graphs</h1>
+            <h3>P1 db graphs</h3>
             {JSON.stringify(p1dbResults) === undefined ? <h1>empty</h1> :
                 p1dbResults.map((p1dbItem,i) => 
                     <P1dbInFreq key={i} resultId={resultId} graphNo={i}/>

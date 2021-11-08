@@ -24,10 +24,23 @@ function FirstPrepStatRes({resultId}) {
     } else {
         return (
             <div  >
-                <h1> Data First prep results Details </h1>
+                <h4> Data First prep results Details </h4>
                 <table className="cur-cons-table">
                     <tbody>
-                        {Object.keys(firstPrepStatDetails).map((item, i) => 
+                        {Object.keys(firstPrepStatDetails).map((item, i) =>
+                            item === "_id" ?
+                            <tr key={i*1}>
+                                <td >Test ID</td>                            
+                                <td >{firstPrepStatDetails[item]}</td>                            
+                            </tr>
+                            :
+                            item === "details" ? 
+                            firstPrepStatDetails[item].length > 0 ?
+                            <tr key={i*1}>
+                                <td >{item}</td>                            
+                                <td >{firstPrepStatDetails[item]}</td>                            
+                            </tr> : null
+                            :
                             <tr key={i*1}>
                                 <td >{item}</td>                            
                                 <td >{firstPrepStatDetails[item]}</td>                            

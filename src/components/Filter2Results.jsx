@@ -15,30 +15,26 @@ const Filter2Results = ({ testerName, dateFrom, dateTo }) => {
 
     useEffect(() => {
         const fetchData = async () => {
-        setLoading(true);
-        const res1 = await axios.get(`/general-test-data/only_pass/tester/${testerName}/date_from/${dateFrom}/date_to/${dateTo}`);
-        setPassUnits(res1.data);
-        const res2 = await axios.get(`/general-test-data/only_fail/tester/${testerName}/date_from/${dateFrom}/date_to/${dateTo}`);
-        setFailUnits(res2.data);
-        var testsFailed = [];
-        var i;
-        for (i = 0; i < testsNames.length; i++) {
-            var unitsFailInTest = 
-            await axios.get(
-                `/general-test-data/only_fail/tests/${testsNames[i]}/tester/${testerName}/date_from/${dateFrom}/date_to/${dateTo}`
-                );
-            testsFailed.push(unitsFailInTest.data.length);
-        }
-        setTestsFailedCount(testsFailed);
-        setLoading(false);
+            setLoading(true);
+            const res1 = await axios.get(`/general-test-data/only_pass/tester/${testerName}/date_from/${dateFrom}/date_to/${dateTo}`);
+            setPassUnits(res1.data);
+            const res2 = await axios.get(`/general-test-data/only_fail/tester/${testerName}/date_from/${dateFrom}/date_to/${dateTo}`);
+            setFailUnits(res2.data);
+            var testsFailed = [];
+            var i;
+            for (i = 0; i < testsNames.length; i++) {
+                var unitsFailInTest = 
+                await axios.get(
+                    `/general-test-data/only_fail/tests/${testsNames[i]}/tester/${testerName}/date_from/${dateFrom}/date_to/${dateTo}`
+                    );
+                testsFailed.push(unitsFailInTest.data.length);
+            }
+            setTestsFailedCount(testsFailed);
+            setLoading(false);
         }
         fetchData();
         //eslint-disable-next-line
     }, []);
-
-    console.log(testerName);
-    console.log(dateFrom);
-    console.log(dateTo);
 
     if (loading) {
         return <Spinner/>

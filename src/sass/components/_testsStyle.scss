@@ -33,10 +33,10 @@
   }
   
   table {
-    position: absolute;
-    right: 50%;
-    transform: translateX(50%);
-    width: 40%;
+    position: relative;
+    right: 0%;
+    transform: translateX(0%);
+    width: 100%;
   }
   
   table,
@@ -54,7 +54,7 @@
   }
   
   .cur-cons-data-div {
-    background-color: rgb(235, 213, 183);
+    // background-color: rgb(235, 213, 183);
     display: flex;
     flex-flow: column wrap;
     justify-content: center;

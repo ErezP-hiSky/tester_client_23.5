@@ -11,14 +11,19 @@ function PieChart({ failUnits, passUnits }) {
 
   const pieOptions = {
     chart: {
-      width: 380,
+      width: "100%",
       type: 'pie',
       
     },
     fill: {
       type: 'gradient',
-      colors: ['#F44336', '#3ACE1F']
+      colors: ['#1E90FF', '#008000'] // #3ACE1F
     },
+    // dataLabels: {
+    //   style: {
+    //     colors: ['#FFA07A', '#90EE90']
+    //   }
+    // },
     labels: ['Fail', 'Pass'],
     responsive: [{
       breakpoint: 480,
@@ -37,8 +42,8 @@ function PieChart({ failUnits, passUnits }) {
         <div >
             <div className="pie-chart">
                 <h2>Pass / Fail status</h2>
-                <ReactApexChart options={pieOptions} series={pieSeries} type="pie" width={380} />
-                <p>This pie chart show the relation between fail and pass terminals .</p>
+                <ReactApexChart options={pieOptions} series={pieSeries} type="donut" width={480} />
+                <p className="lead">This pie chart show the relation between fail and pass terminals .</p>
             </div>
         </div>
     );

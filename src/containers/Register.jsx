@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import '../sass/main.scss';
 
 function Register(props) {
+
     const [user, setUser] = useState({
         email: "",
         password:"",

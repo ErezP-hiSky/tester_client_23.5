@@ -5,6 +5,7 @@
 
 @import "base/animations";
 @import "base/base";
+@import "base/general";
 @import "base/typography";
 @import "base/utilities";
 
@@ -12,6 +13,7 @@
 @import "components/shapedBtns";
 @import "components/testsStyle";
 
+@import "containers/Dashboard";
 @import "containers/Management";
 @import "containers/Register";
 @import "containers/ResultsContainer";

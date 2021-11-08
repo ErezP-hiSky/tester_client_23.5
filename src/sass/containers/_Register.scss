@@ -5,12 +5,13 @@
     top: 40%;
     left: 50%;
     transform: translate(-50%, -10%);
-    background: #e28f8f67;
+    // background: #e28f8f67;
     text-align: center;
     border-radius: 5px;
-    box-shadow: 0 2rem 3rem;
+    // box-shadow: 0 2rem 3rem;
 
   
+  & input[type="text"],
   & input[type="email"],
   & input[type="password"] {
     border: 0;
@@ -28,6 +29,7 @@
     transition: 0.25s;
   }
   
+  & input[type="text"]:focus,
   & input[type="email"]:focus,
   & input[type="password"]:focus {
     width: 28rem;

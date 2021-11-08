@@ -1,22 +1,67 @@
 .search-button {
     background-color: $color-primary;
-    border: 2px solid $button-color;
-    color: rgb(182, 154, 29);
-    font-weight: 600;
-    padding: 1.5rem 3.2rem;
+    // border: 2px solid $button-color;
+    color: rgb(182, 154, 29);    
+    padding: 1.5rem;
     text-align: center;
-    text-decoration: none;
-    /* display: inline-block; */
-    font-size: 3.6rem;
+    text-decoration: none;    
     border-radius: 8px;
     transition-duration: 0.2s;
-    margin-top: 5%;
-    align-items: center;
-
+        
     &:hover {
         background-color: $button-color;
         color: white;
       }
   }
   
-  
+
+.tech-search {
+    display: grid;
+    gap: 1rem;
+    grid-template-areas: 
+    "header"
+    "sidebar"
+    "content";
+}
+
+@media only screen and (min-width: 50rem)  {
+    .tech-search {
+
+        grid-template-columns: 20% auto;
+        grid-template-areas:
+        "header   header"
+        "sidebar  content";
+    }
+}
+
+@media only screen and (min-width: 60rem)   {
+    .tech-search {
+        gap: 2rem;
+        grid-template-columns: 120px auto;
+        grid-template-areas:
+        "header  header  "
+        "sidebar content ";        
+    }
+}
+
+.tech-box {
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1.4rem; 
+}
+
+.sidebar {
+    grid-area: sidebar;
+}
+
+.tech-content {
+    grid-area: content;
+  }
+
+.tech-header {
+    grid-area: header;
+}
+
+.tech-footer {
+    grid-area: footer;
+}

@@ -24,6 +24,18 @@ function PicVersionRes({resultId}) {
             <table className="cur-cons-table">
                 <tbody>
                     {Object.keys(picVersionData).map((item, i) => 
+                        item === "_id" ?
+                        <tr key={i*1}>
+                            <td >Test ID</td>                            
+                            <td >{picVersionData[item]}</td>                            
+                        </tr>
+                        :
+                        item === "static or dynamic" ?
+                        <tr key={i*1}>
+                            <td >Product Type</td>                            
+                            <td >{picVersionData[item]}</td>                            
+                        </tr>
+                        :
                         <tr key={i*1}>
                             <td >{item}</td>                            
                             <td >{picVersionData[item]}</td>                            

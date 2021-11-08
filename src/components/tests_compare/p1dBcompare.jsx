@@ -28,7 +28,7 @@ function P1dbCompare(props) {
                     // console.log(`response.data is --> ${response}`);
                     // console.log(response.data);
                     if (response.data.length === 0) {
-                        console.log("there was no data");
+                        // console.log("p1db - there was no data");
                         setIsDataFlag(false);
                     } else {
                         

@@ -24,7 +24,7 @@ function GuiDataRes({resultId}) {
     } else {
         return (
             <div  >
-                <h1> Data user input in ui Details </h1>
+                <h3> Data user input in ui & MAC Details </h3>
                 <table className="cur-cons-table">
                     <tbody>
                         {Object.keys(guiDetails).map((item, i) => 

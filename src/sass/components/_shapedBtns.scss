@@ -1,34 +1,30 @@
 .shapedBtns-contianer {
-    display: absolute;
-    top: 20%;
-    left: 5%;
-    min-height: 20rem;
-    min-width: 20rem;
-  }
-  
-  .btn-m-container {
-    display: flex;
-    background-color: $color-red;
-    width: 140px;
-    height: 140px;
-    position:absolute;
-    top: 45%;
-    left: 46%;
-    transform: rotate(45deg);
+  grid-area: shaped-btns; 
+}
 
-    &:hover {
-      background-color: $color-red-2;
-      transform: rotate(45deg) translateX(-1.5rem) translateY(-1.5rem) scale(1.1);
-    }
-  
-  
-    & .linkm-text {
-        @include text-fix;
-    }
+.btn-m-container {
+  // display: flex;
+  background-color: $color-red;
+  width: 140px;
+  height: 140px;
+  position:absolute;
+  top: 45%;
+  left: 46%;
+  transform: rotate(45deg);
+
+  &:hover {
+    background-color: $color-red-2;
+    transform: rotate(45deg) translateX(-1.5rem) translateY(-1.5rem) scale(1.1);
   }
-  
+
+
+  & .linkm-text {
+      @include text-fix;
+  }
+}
+
   .btn-t-container {
-    display: flex;
+    // display: flex;
     background-color: $color-red;
     width: 14rem;
     height: 14rem;
@@ -48,7 +44,7 @@
   }
   
   .register-container {
-    display: flex;
+    // display: flex;
     background-color: black;
     width: 14rem;
     height: 14rem;
@@ -82,6 +78,10 @@
         left: 20%;
         transform: rotate(-45deg);
       }
+    
+    &:hover {
+      transform: rotate(45deg) scale(1.1);
+    }
   }
 
   

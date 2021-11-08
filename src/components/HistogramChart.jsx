@@ -33,7 +33,7 @@ function HistogramChart({ categories, dataCounted }) {
     },
     plotOptions: {
       bar: {
-        columnWidth: '50%',
+        columnWidth: '40%',
         endingShape: 'rounded'  
       }
     },
@@ -80,8 +80,8 @@ function HistogramChart({ categories, dataCounted }) {
         <div >           
             <div className="column-chart">
                 <h2>Fail Distribution</h2>
-                <ReactApexChart options={options} series={series} type="bar" height={350} />
-                <p>This histogram show how many terminals fail for each test.</p>
+                <ReactApexChart options={options} series={series} type="bar" height={350} width={650} />
+                <p className="lead">This histogram show how many terminals fail for each test.</p>
             </div>            
         </div>
     );

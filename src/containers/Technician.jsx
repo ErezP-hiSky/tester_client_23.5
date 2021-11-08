@@ -26,25 +26,16 @@ function TechPage() {
   }
 
   return (
-    <div className="tech-container" >
-      <h1 className="header">Technician Page</h1>
-      <h2 className="header-sub"> Search by Serial Number: </h2>
-        <form action="/search" method="POST">
-          <div className="search-fields">
-            
-            <br />
-            <div className="name-input">
-              <p className="name">date :</p>
-              <input className="name-input-field"
-                type="date"
-                name="startDate" 
-                autoComplete="off"
-                onChange={handleChange}/>
-            </div>
-            <br />
+    <div className="tech-container" >      
+      <h3 className="header-sub"> Search by Serial Number: </h3>
+        <form className="searchSN-form" action="/search" method="POST">
+          <div className="search-fields">            
+          <br />
            <div className="name-input">
               <p className="name">unit SN :</p>
-              <input className="name-input-field"
+              <input type="number"
+                className="name-input-field"
+                placeholder="Enter serial number"
                 name="unitSN" 
                 autoComplete="off"
                 onChange={handleChange}/>

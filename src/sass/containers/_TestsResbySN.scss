@@ -12,20 +12,23 @@
     }
 
     &__p {
-        font-size: 0.7rem ;
+        font-size: 0.9rem ;
     }
 }
 
+.tests__p{
+    font-size: 1.2rem;
+}
 
 .results-table {
-    margin-top: 5rem;
+    margin-top: 1rem;
     position: relative;
     right: -60%;
     transform: translate(-100%);
     border: 1px solid black;
 
     &--p1db {
-        font-size: 0.8rem;
+        font-size: 1rem;
     }
 
     &--inside {
@@ -33,6 +36,21 @@
         box-sizing: border-box;
         width: 100%;
         border-collapse: collapse;
+    }
+
+    &__fulllinkdl {
+        right: -50% ;
+        transform: translate(-50%);
+        font-size: 1rem;
+        margin-bottom: 3rem;
+    }
+
+    &__fulllinkgeneral {
+        right: -50% ;
+        transform: translate(-50%);
+        font-size: 1rem;
+        margin-bottom: 3rem;
+        width: 80%;
     }
 }
 

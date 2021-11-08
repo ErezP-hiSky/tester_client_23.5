@@ -24,10 +24,51 @@ function FLGeneralRes({resultId}) {
     } else {            
         return (
             <div  >
-                <h1> FL General Res Details </h1>
+                <h4> Full Link General Results </h4>
                 <table className="cur-cons-table">
                     <tbody>
                         {Object.keys(FLGeneral).map((item, i) => 
+                            item ===  '_id' ?
+                            <tr key={i*1}>
+                                <td >Test ID</td>                            
+                                <td >{FLGeneral[item]}</td>                            
+                            </tr>
+                            :
+                            item ===  'Start_date' ?
+                            <tr key={i*1}>
+                                <td >Start time</td>                            
+                                <td >
+                                    <ul>
+                                        <li>Date: {FLGeneral['Start_date'].split('T')[0]}</li>
+                                        <li>Time: {FLGeneral['Start_date'].split('T')[1].slice(0, -5)}</li>
+                                    </ul>                                     
+                                </td>                            
+                            </tr>
+                            :
+                            item ===  'End_date' ?
+                            <tr key={i*1}>
+                                <td >End time</td>                            
+                                <td >
+                                    <ul>
+                                        <li>Date: {FLGeneral['Start_date'].split('T')[0]}</li>
+                                        <li>Time: {FLGeneral['Start_date'].split('T')[1].slice(0, -5)}</li>
+                                    </ul>                                     
+                                </td>                            
+                            </tr>
+                            :
+                            item ===  'green_led' ?
+                            <tr key={i*1}>
+                                <td >Green Led Ok ?</td>                            
+                                <td >{FLGeneral[item]}</td>                            
+                            </tr>
+                            :
+                            item ===  'details' ?
+                            FLGeneral['details'].length > 0 ?
+                            <tr key={i*1}>
+                                <td >Details</td>                            
+                                <td >{FLGeneral['details']}</td>                            
+                            </tr> : null
+                            :
                             <tr key={i*1}>
                                 <td >{item}</td>                            
                                 <td >{FLGeneral[item]}</td>                            

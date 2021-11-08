@@ -1,33 +1,62 @@
 .home-page {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-areas: 'db-img db-txt';
+    grid-template-columns: 40% 1fr;
+    grid-template-rows: 30% 40rem 30%;
+    column-gap: 1rem;
+    row-gap: 1rem;
+    height: 100%;
 }
-.home-page > * {
-    flex: 5 3 160px;
+
+.db-img {
+    grid-area: db-img;  
+    justify-self: stretch; 
+    align-self: stretch; 
+    grid-column: auto;
+    grid-row: 1 / 4;
+    position: relative;       
+    
+    &::after {
+        content: "";
+        background: url("../../images/Ku_Antenna_in_Lab_lite.jpg");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        opacity: 0.7;        
+        top: 0;
+        left: 0;
+        bottom: -10rem;
+        right: 0;
+        position: absolute;
+    }
 }
 
-
-
-  
-.db-text {
-    position: absolute;
-    top: 20%;
-    left: 5%;
-    color: crimson;
+.hisky-db {   
+    grid-area: db-txt; 
+    align-self: center;
     text-align: left;
-    border-radius: 7px;
-    box-shadow: 0 2px 5px #ccc;
-    padding: 1rem;
-    max-width: 40rem;
-    margin: 1.6rem;
-}
+    transition: all 0.5s;
+    color: $color-black;
+    display: inline-block;  
+    width: 60%;  
+    grid-column: auto;
+    grid-row: 2;
+    justify-self: center;    
 
-.db-text-header {
-    margin-bottom: 3rem;
-}
+    &__head{
+        font-size: 3rem;        
+    }
 
-.hisky-db-text {
-    font-size: 1.4rem;
+    &__text {
+        margin-top: 3rem;
+        font-size: 1.5rem;
+    }
+
+    & hr {
+        margin-left: 0;
+        border: 0;
+        width: 100%;
+        border-top: 1px solid #c9c7c7;
+    }
 }
 
 .box {

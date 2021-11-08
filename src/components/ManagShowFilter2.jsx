@@ -16,7 +16,6 @@ const ManShowFilter2 = () => {
     
     function handleChange(e) {        
         setManageSearch({ ...manageSearch, [e.target.name]: e.target.value });
-        console.log(manageSearch);
     }
 
     const hideComponent = (name) => {
@@ -62,7 +61,7 @@ const ManShowFilter2 = () => {
                               type="date"
                               name="dateFrom" 
                               autoComplete="off"
-                              id="datefrom"
+                              id="dateFrom"
                               onChange={handleChange}/>
                   <label className="date-input__label col-1-of-4" 
                                   htmlFor="dateTo">Date To:</label>
@@ -70,7 +69,7 @@ const ManShowFilter2 = () => {
                               type="date"
                               name="dateTo" 
                               autoComplete="off"
-                              id="datefrom"
+                              id="dateTo"
                               onChange={handleChange}/>
                 </div>
                 <button type="button" 

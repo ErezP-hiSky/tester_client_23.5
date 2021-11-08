@@ -6,12 +6,13 @@ import '../../sass/main.scss';
 
 function GeneralTestDataRes({resultId}) {
     const [generalDetails, setGeneralDetails] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
      
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
             const res = await axios.get(`/general-test-data/findbyid/${resultId}`);
+            // console.log(res.data)
             setGeneralDetails(res.data);
             setLoading(false);
         };
@@ -42,7 +43,18 @@ function GeneralTestDataRes({resultId}) {
                             <td>{generalDetails['unit_SN']}</td>
                             <td>{generalDetails._id}</td>
                             <td>{generalDetails['Tester_name']}</td>
-                            <td>{generalDetails['Test_Date']}</td>
+                            <td>
+                                <ul className="lead">                                    
+                                    <li><strong>
+                                        Date: {generalDetails['Test_Date'].split('T')[0]}
+                                    </strong></li>
+                                    <li>
+                                        <strong>
+                                            Time: {generalDetails['Test_Date'].split('T')[1].slice(0, -5)}
+                                        </strong>
+                                    </li>
+                                </ul>
+                            </td>
                             <td>{generalDetails['product_type']} {generalDetails['antenna_type']}</td>
                             <td>{generalDetails.final_test_result}</td>
                         </tr>

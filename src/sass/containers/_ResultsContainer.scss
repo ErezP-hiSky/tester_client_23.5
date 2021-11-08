@@ -1,41 +1,59 @@
-.all-results {
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: rgba(128, 128, 128, 0.171);
+.results_wrapper {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 30rem 1fr  1fr;
+    grid-template-areas:
+               "header header  header"
+               "sidebar content content";
+    
+    color: #444;
 }
-  
+
+.results_sidebar {
+    grid-area: sidebar;
+    margin-bottom: 2rem;
+}
+
+.results_content {
+    grid-area: content;
+}
+
+.results_header {
+    grid-area: header;
+}
+
+.results_box {
+    border-radius: 5px;
+    padding: 20px;
+  }
+
 .gear-img {
     position: absolute;
-    top: 30%;
+    top: 20%;
     left: 10%;
     width: 5rem;
 }
   
-.hide-btns {
-    width: 80%;
+.hide-btns {    
     margin: 5%;
-
     
     & button {
         border: 2px solid #0f0944;
-        color: white;
-        height: 60px;
-        width: 250px;
+        // color: white;
+        height: 3rem;
+        width: 25rem;
         text-align: center;
         text-decoration: none;
         display: inline-block;
         font-size: 16px;
-        border-radius: 12px;
+        border-radius: 4px;
         transition-duration: 0.4s;
         vertical-align: middle;
-        margin: 3px;
-    
+        margin: 7px;   
         
         &:hover {
-            background-color: white;
-            color: #008cba;
+            background-color: rgb(57, 106, 212);
+            color: #99d9ee;
         }
         
         & span {
@@ -66,79 +84,12 @@
     }
 }
 
-.btn1 {
-    background-color: brown;
+.idFoundBtn {
+    font-size: 1.2rem;
+    padding-bottom: 1rem;
+    button {
+        padding: 0.1rem;
+    }
 }
-  
-.btn2 {
-    background-color: rgba(165, 42, 42, $color-opacity);
-}
-  
-.btn3 {
-    background-color: rgba(165, 42, 42, $color-opacity - $color-gap * 1);
-}
-  
-.btn4 {
-    background-color: rgba(165, 42, 42, $color-opacity - $color-gap * 2);
-}
-  
-.btn5 {
-    background-color: rgba(165, 42, 42, $color-opacity - $color-gap * 3);
-}
-  
-.btn6 {
-    background-color: rgba(165, 42, 42, $color-opacity - $color-gap * 4);
-}
-  
-.btn7 {
-    background-color: rgba(165, 42, 42, $color-opacity - $color-gap * 5);
-}
-  
-  .btn8 {
-    background-color: rgba(165, 42, 42, $color-opacity - $color-gap * 6);
-  }
-  
-  .btn9 {
-    background-color: rgba(165, 42, 42, $color-opacity - $color-gap * 7);
-  }
-  
-.btn10 {
-    background-color: rgba(165, 42, 42, $color-opacity - $color-gap * 8);
-}
-  
-.btn11 {
-    background-color: rgba(165, 42, 42, $color-opacity - $color-gap * 9);
-}
-  
-.btn12 {
-    background-color: rgba(165, 42, 42, $color-opacity - $color-gap * 10);
-}
-  
-.btn13 {
-    background-color: rgba(165, 42, 42, $color-opacity - $color-gap * 11);
-}
-  
-.btn14 {
-    background-color: rgba(165, 42, 42, $color-opacity - $color-gap * 12);
-}
-  
-.btn15 {
-    background-color: rgba(165, 42, 42, $color-opacity - $color-gap * 13);
-}
-  
-.btn16 {
-    background-color: rgba(165, 42, 42, $color-opacity - $color-gap * 14);
-}
-  
-.btn17 {
-    background-color: rgba(165, 42, 42, $color-opacity - $color-gap * 15);
-}
-  
-.btn18 {
-    background-color: rgba(165, 42, 42, $color-opacity - $color-gap * 16);
-}
-  
-.btn19 {
-    background-color: rgba(165, 42, 42, $color-opacity - $color-gap * 17);
-}
-  
+
+
