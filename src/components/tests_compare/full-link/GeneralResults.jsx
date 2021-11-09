@@ -13,8 +13,7 @@ function GeneralResults({idToShow}) {
             const res = await axios.get(`/full-link-general/findbyid/${idToShow}`); 
             if (res.data.length === 0) {
                 setIsDataFlag(false);
-            } else {
-                // console.log(res.data)
+            } else {                
                 setFlGeneral(res.data);
                 setIsDataFlag(true);
             }
@@ -35,7 +34,9 @@ function GeneralResults({idToShow}) {
                         <thead>
                             <tr>
                                 {Object.keys(flGeneral).map((header, i) => 
-                                    <td key={i}>{header}</td>
+                                    header === "_id" ?
+                                    <td key={i}>Test ID</td>
+                                    : <td key={i}>{header}</td>
                                 )}                            
                             </tr>
                         </thead>
@@ -43,11 +44,27 @@ function GeneralResults({idToShow}) {
                             <tr>
                             {
                                 Object.keys(flGeneral).map((header, i) =>(
-                                header !== "details" 
-                                ? <td key={i}>{flGeneral[header]}</td>
-                                : <td key={i}>{flGeneral[header].map((detail, ii) =>
+                                header === "details" 
+                                ?
+                                <td key={i}>{flGeneral[header].map((detail, ii) =>
                                     <p key={ii}>{ii+1}{'. '}{detail}</p>
-                                )}</td>))
+                                )}</td> :
+                                header === "Start_date" ?
+                                <td key={i}>
+                                    <ul>
+                                        <li>Date: {flGeneral['Start_date'].split('T')[0]}</li>
+                                        <li>Time: {flGeneral['Start_date'].split('T')[1].slice(0, -5)}</li>
+                                    </ul>
+                                </td> :
+                                header === "End_date" ?
+                                <td key={i}>
+                                    <ul>
+                                        <li>Date: {flGeneral['End_date'].split('T')[0]}</li>
+                                        <li>Time: {flGeneral['End_date'].split('T')[1].slice(0, -5)}</li>
+                                    </ul>
+                                </td> :
+                                <td key={i}>{flGeneral[header]}</td> 
+                                ))
                             }
                             </tr>
                         </tbody>

@@ -31,15 +31,17 @@ function TempChanges({idToShow, unitSN}) {
                 {
                     isDataFlag && (
                         <>
-                        <h5>Temperatue Changes unit serial number {unitSN}</h5>
+                        <h5 className="lead">Temperature Changes unit serial number {unitSN}</h5>
                         <div className="row">
                         <div className="col-1-of-2">
-                            <p>after current consumption test</p>
+                            <p className="lead">after current consumption test</p>
                             <table className="results-table results-table__fulllinkgeneral">
                                 <thead>
-                                    <th>RF Temperature</th>
-                                    <th>Battery Temperature</th>
-                                    <th>Digital Temperature</th>
+                                    <tr>
+                                        <th>RF Temperature</th>
+                                        <th>Battery Temperature</th>
+                                        <th>Digital Temperature</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
@@ -51,12 +53,14 @@ function TempChanges({idToShow, unitSN}) {
                             </table>
                         </div>
                         <div className="col-1-of-2">
-                            <p>after temperature test</p>
+                            <p className="lead">after temperature test</p>
                             <table className="results-table results-table__fulllinkgeneral">
                                 <thead>
-                                    <th>RF Temperature</th>
-                                    <th>Battery Temperature</th>
-                                    <th>Digital Temperature</th>
+                                    <tr>
+                                        <th>RF Temperature</th>
+                                        <th>Battery Temperature</th>
+                                        <th>Digital Temperature</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
                                     <tr>

@@ -45,6 +45,8 @@ function DownLinkResults({ idToShow })  {
                                 <tr key={trIndex}>
                                     {Object.keys(fullLinkDL).map((header, i) => 
                                         Array.isArray(fullLinkDL[header]) ? 
+                                        header === "Freq_Offset" ? 
+                                        <td key={i}>{fullLinkDL[header][trIndex].toFixed(2)}</td> :
                                         <td key={i}>{fullLinkDL[header][trIndex]}</td> :
                                         null
                                     )}

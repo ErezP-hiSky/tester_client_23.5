@@ -35,8 +35,8 @@ function TestsbySn(props) {
         const fetchData = async () => {
             // console.log(snLimited)
             setLoading(true);
-            const res = await axios.get(`/general-test-data/findbyUnitSNrangeNdate/
-                        ${snLimited[0]}/${snLimited[snLength]}/dateFrom/${date_from}/dateTo/${date_to}`);
+            const res = await axios.get(`/general-test-data/findbyUnitSNrangeNdate/` +
+                        `${snLimited[0]}/${snLimited[snLength]}/dateFrom/${date_from}/dateTo/${date_to}`);
             setTestsBySNdate(res.data);
             setLoading(false);
         };
@@ -118,168 +118,164 @@ function TestsbySn(props) {
         return <Spinner />
     } else {
         return (
-            <div>
-                <h3 className="units-heading">Tests result by serial number :</h3>
-                <div>
+            <div className="results_wrapper">
+                <h3 className="results_header units-heading results_box">Tests result by serial number :</h3>
+                <div className="results_sidebar back-black hide-btns">
                     {
                         firstPrepRes && 
-                        <button className="compare_button" onClick={() => hideComponent("show_firstPrep_Test")} >
+                        <button  onClick={() => hideComponent("show_firstPrep_Test")} >
                             <span>firstPrep compare</span>
                         </button>
                     }
                     {
                         imuGpsRes && 
-                        <button className="compare_button" onClick={() => hideComponent("show_IMU_Test")} >
+                        <button onClick={() => hideComponent("show_IMU_Test")} >
                             <span>Imu compare </span>
                         </button>
                     }
                     {
                         TcxoCalRes && 
-                        <button className="compare_button" onClick={() => hideComponent("show_Tcxo_Test")} >
+                        <button onClick={() => hideComponent("show_Tcxo_Test")} >
                             <span>Tcxo Calibration compare</span>
                         </button>
                     }
                     {
                         p1dbRes && 
-                        <button className="compare_button" onClick={() => hideComponent("show_p1dB_Test")} >
+                        <button onClick={() => hideComponent("show_p1dB_Test")} >
                             <span>p1db compare </span>
                         </button>
                     }
                     {
                         curConsRes && 
-                        <button className="compare_button" onClick={() => hideComponent("show_curCon_Test")} >
-                            <span>Current Consumption compare</span>
+                        <button onClick={() => hideComponent("show_curCon_Test")} >
+                            <span>Current Consumption</span>
                         </button>
                     }
                     {
                         fulLinkRes &&
-                        <button className="compare_button" onClick={() => hideComponent("show_fullLink_Test")} >
+                        <button onClick={() => hideComponent("show_fullLink_Test")} >
                             <span>full - link compare </span>
                         </button>
                     }
                     {
                         crossPollRes && 
-                        <button className="compare_button" onClick={() => hideComponent("show_crossPoll_Test")} >
+                        <button onClick={() => hideComponent("show_crossPoll_Test")} >
                             <span>Cross Poll compare</span>
                         </button>
                     }
                     {
                         generalRes && 
-                        <button className="compare_button" onClick={() => hideComponent("show_General_Test")} >
+                        <button onClick={() => hideComponent("show_General_Test")} >
                             <span>General Result compare</span>
                         </button>
                     }
-                    <button className="compare_button" onClick={() => hideComponent("clear_page")} >
+                    <button onClick={() => hideComponent("clear_page")} >
                         <span>Clear Page</span>
                     </button>
                 </div>
-                
-                {
-                    show_firstPrep_Test && <div>
-                        <h2>first prep compare</h2>
-                        {
-                            testsBySNdate.map((item, index) => (
-                                <div>
-                                <FirstprepCompareResult
+                <div className="results_content results_box">
+                    {
+                        show_firstPrep_Test && <div>
+                            <h4>first prep compare</h4>
+                            {
+                                testsBySNdate.map((item, index) => (
+                                    <FirstprepCompareResult
+                                        key={index}
+                                        idToShow={item['_id']}
+                                        unitSN={item['unit_SN']}
+                                    />
+                                ))
+                            }
+                        </div>
+                    }
+                    {
+                        show_IMU_Test && <div>  
+                            <h4>IMU compare</h4>                      
+                            {testsBySNdate.map((item, index) =>
+                                <ImuCompare
                                     key={index}
-                                    idToShow={item['_id']}
-                                    unitSN={item['unit_SN']}
-                                />
-                                </div>
-                            ))
-                        }
-                    </div>
-                }
-                {
-                    show_IMU_Test && <div>  
-                        <h2>IMU compare</h2>                      
-                        {testsBySNdate.map((item, index) =>
-                            <ImuCompare
-                                key={index}
-                                idToShow = {item['_id']}
-                                unitSN = {item['unit_SN']} />
-                        )}
-                    </div>
-                }
-                {
-                    show_Tcxo_Test && <div>
-                        <h2>Tcxo compare</h2>
-                        {
-                            testsBySNdate.map((item, index) => (
-                                <div>
-                                <TcxoResCompare
+                                    idToShow = {item['_id']}
+                                    unitSN = {item['unit_SN']} />
+                            )}
+                        </div>
+                    }
+                    {
+                        show_Tcxo_Test && <div>
+                            <h4>Tcxo compare</h4>
+                            {
+                                testsBySNdate.map((item, index) => (                                
+                                    <TcxoResCompare
+                                        key={index}
+                                        idToShow={item['_id']}
+                                        unitSN={item['unit_SN']}
+                                    />                               
+                                ))
+                            }
+                        </div>
+                    }
+                    {
+                        show_p1dB_Test && <div>
+                            <h4>P1db Compare: </h4>
+                            {/* <p>{testsBySNdate.length} results</p> */}
+                            {typeof(testsBySNdate) === 'undefined' 
+                            ? <h1>Waiting ...</h1> :
+                                testsBySNdate.map((item, index) => (
+                                    <P1dbCompare
+                                        key={index}
+                                        idToShow = {item['_id']}
+                                        unitSN = {item['unit_SN']}
+                                    />
+                                ))              
+                            }
+                        </div>
+                    }
+                    {
+                        show_curCon_Test && <div>
+                            <h4>Current Consumption compare</h4>
+                            {testsBySNdate.map((item, index) =>                       
+                                <CurrentConsumption 
                                     key={index}
-                                    idToShow={item['_id']}
-                                    unitSN={item['unit_SN']}
+                                    idToShow = {item['_id']}
+                                    unitSN = {item['unit_SN']}
                                 />
-                                </div>
-                            ))
-                        }
-                    </div>
-                }
-                {
-                    show_p1dB_Test && <div>
-                        <h2>P1db Compare: </h2>
-                        {/* <p>{testsBySNdate.length} results</p> */}
-                        {typeof(testsBySNdate) === 'undefined' 
-                        ? <h1>Waiting ...</h1> :
-                            testsBySNdate.map((item, index) => (
-                                <P1dbCompare
-                                key={index}
-                                idToShow = {item['_id']}
-                                unitSN = {item['unit_SN']}
+                            )}
+                        </div>
+                    }
+                    {
+                        show_fullLink_Test && <div>
+                            <h4>Full Link compare:</h4>
+                            {testsBySNdate.map((item, index) =>
+                                <FullLinkCompare
+                                    key={index}
+                                    idToShow = {item['_id']}
+                                    unitSN = {item['unit_SN']} />
+                            )}
+                        </div>
+                    }
+                    {
+                        show_crossPoll_Test && <div>
+                            <h4>Cross-Poll compare:</h4>
+                            {testsBySNdate.map((item, index) =>
+                                <CrossPollResults
+                                    key={index}
+                                    idToShow = {item['_id']}
+                                    unitSN = {item['unit_SN']} />
+                            )}
+                        </div>
+                    }
+                    {
+                        show_General_Test && <div> 
+                            <h4>General Results compare</h4>
+                            {testsBySNdate.map((item, index) =>                       
+                                <GeneralResCompare 
+                                    key={index}
+                                    idToShow = {item['_id']}
+                                    unitSN = {item['unit_SN']}
                                 />
-                            ))              
-                        }
-                    </div>
-                }
-                {
-                    show_curCon_Test && <div>
-                        <h2>Current Consumption compare</h2>
-                        {testsBySNdate.map((item, index) =>                       
-                            <CurrentConsumption 
-                                key={index}
-                                idToShow = {item['_id']}
-                                unitSN = {item['unit_SN']}
-                            />
-                        )}
-                    </div>
-                }
-                {
-                    show_fullLink_Test && <div>
-                        <h2>Full Link compare:</h2>
-                        {testsBySNdate.map((item, index) =>
-                            <FullLinkCompare
-                                key={index}
-                                idToShow = {item['_id']}
-                                unitSN = {item['unit_SN']} />
-                        )}
-                    </div>
-                }
-                {
-                    show_crossPoll_Test && <div>
-                        <h2>CrossPoll compare:</h2>
-                        {testsBySNdate.map((item, index) =>
-                            <CrossPollResults
-                                key={index}
-                                idToShow = {item['_id']}
-                                unitSN = {item['unit_SN']} />
-                        )}
-                    </div>
-                }
-                {
-                    show_General_Test && <div> 
-                        <h2>General Results compare</h2>
-                        {testsBySNdate.map((item, index) =>                       
-                            <GeneralResCompare 
-                                key={index}
-                                idToShow = {item['_id']}
-                                unitSN = {item['unit_SN']}
-                            />
-                        )}
-                    </div>
-                }
-                
+                            )}
+                        </div>
+                    }
+                </div>
             </div>
             );
     }

@@ -45,6 +45,8 @@ function UpLinkResults({ idToShow })  {
                                 <tr key={trIndex}>
                                     {Object.keys(fullLinkUL).map((header, i) => 
                                         Array.isArray(fullLinkUL[header]) ? 
+                                        header === "Freq_Offset" ? 
+                                        <td key={i}>{fullLinkUL[header][trIndex].toFixed(2)}</td> :
                                         <td key={i}>{fullLinkUL[header][trIndex]}</td> :
                                         null
                                     )}

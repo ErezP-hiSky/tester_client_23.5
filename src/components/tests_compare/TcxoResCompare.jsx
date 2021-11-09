@@ -11,7 +11,7 @@ function TcxoResCompare({idToShow, unitSN}) {
         const fetchData = async () => {
             setLoading(true);
             const { data } = await axios.get(`/tcxo-cal/findbyid/${idToShow}`);
-            if (data) {                             
+            if (data) {  
                 setTcxoRes(data);
                 setIsDataFlag(true);               
             } else {
@@ -32,7 +32,8 @@ function TcxoResCompare({idToShow, unitSN}) {
                 <h5>TCXO results for unit serial number {unitSN}</h5>
                 <table className="results-table results-table__fulllinkgeneral">
                     <thead>
-                        <tr>                            
+                        <tr>       
+                            <th>ID</th>                     
                             <th>X</th>
                             <th>Y</th>
                             <th>DAC value</th>
@@ -48,7 +49,8 @@ function TcxoResCompare({idToShow, unitSN}) {
                         </tr>                        
                     </thead>
                     <tbody>
-                        <tr>                            
+                        <tr>         
+                            <td>{tcxoRes['_id']}</td>                   
                             <td>{tcxoRes['x']}</td>
                             <td>{tcxoRes['y']}</td>
                             <td>{tcxoRes['clkDac val']}</td>

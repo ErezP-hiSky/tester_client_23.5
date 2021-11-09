@@ -8,7 +8,7 @@
     }
 
     &--p1db {
-        width: 130%;
+        width: 130%;        
     }
 
     &__p {
@@ -29,6 +29,8 @@
 
     &--p1db {
         font-size: 1rem;
+        right: -70%;
+        width: 60%;
     }
 
     &--inside {
@@ -39,6 +41,7 @@
     }
 
     &__fulllinkdl {
+        width: 90%;
         right: -50% ;
         transform: translate(-50%);
         font-size: 1rem;

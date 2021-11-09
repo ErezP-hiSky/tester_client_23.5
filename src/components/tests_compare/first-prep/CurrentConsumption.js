@@ -46,8 +46,18 @@ function CurrentConsumption({idToShow, unitSN}) {
                     </thead>
                     <tbody>
                         <tr>                            
-                            <td>{currentRes['start_time']}</td>
-                            <td>{currentRes['end_time']}</td>
+                            <td>
+                                <ul>
+                                    <li>Date: {currentRes['start_time'].split('T')[0]}</li>
+                                    <li>Time: {currentRes['start_time'].split('T')[1].slice(0, -5)}</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Date: {currentRes['end_time'].split('T')[0]}</li>
+                                    <li>Time: {currentRes['end_time'].split('T')[1].slice(0, -5)}</li>
+                                </ul>
+                            </td>
                             <td>{currentRes['current_consumption_test']['Temp Test result']}</td>
                         </tr>
                     </tbody>

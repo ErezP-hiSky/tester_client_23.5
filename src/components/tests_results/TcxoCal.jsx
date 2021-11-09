@@ -52,31 +52,33 @@ function TcxoCalRes({resultId}) {
                         </tr>
                     </thead>
                     <tbody>
-                        <td>{tcxoCalDetails['_id']}</td>
-                        <td>                                
-                            <ul>
-                                <li>Date: {tcxoCalDetails['start_time'].split('T')[0]}</li>
-                                <li>Time: {tcxoCalDetails['start_time'].split('T')[1].slice(0, -5)}</li>
-                            </ul>   
-                        </td>   
-                        <td>{tcxoCalDetails['x']}</td>
-                        <td>{tcxoCalDetails['y']}</td>
-                        <td className="yellow_highlight">{tcxoCalDetails['clkDac val']}</td>
-                        <td>{tcxoCalDetails['tpc']}</td>
-                        <td>{tcxoCalDetails['rx_freq_offset']}</td>
-                        <td>{tcxoCalDetails['tx_offset_invert']}</td>
-                        <td>{tcxoCalDetails['Tpc-ref 71']}</td>
-                        <td>{tcxoCalDetails['Tpc-PIC reg 4']}</td>
-                        <td>{tcxoCalDetails['dig_temp']}</td>
-                        <td>{tcxoCalDetails['rf_temp']}</td>
-                        <td>                                
-                            <ul>
-                                <li>Date: {tcxoCalDetails['end_time'].split('T')[0]}</li>
-                                <li>Time: {tcxoCalDetails['end_time'].split('T')[1].slice(0, -5)}</li>
-                            </ul>   
-                        </td>
-                        <td>{tcxoCalDetails['status']}</td>
-                        <td>{tcxoCalDetails['details']}</td>                        
+                        <tr>
+                            <td>{tcxoCalDetails['_id']}</td>
+                            <td>                                
+                                <ul>
+                                    <li>Date: {tcxoCalDetails['start_time'].split('T')[0]}</li>
+                                    <li>Time: {tcxoCalDetails['start_time'].split('T')[1].slice(0, -5)}</li>
+                                </ul>   
+                            </td>   
+                            <td>{tcxoCalDetails['x']}</td>
+                            <td>{tcxoCalDetails['y']}</td>
+                            <td className="yellow_highlight">{tcxoCalDetails['clkDac val']}</td>
+                            <td>{tcxoCalDetails['tpc']}</td>
+                            <td>{tcxoCalDetails['rx_freq_offset']}</td>
+                            <td>{tcxoCalDetails['tx_offset_invert']}</td>
+                            <td>{tcxoCalDetails['Tpc-ref 71']}</td>
+                            <td>{tcxoCalDetails['Tpc-PIC reg 4']}</td>
+                            <td>{tcxoCalDetails['dig_temp']}</td>
+                            <td>{tcxoCalDetails['rf_temp']}</td>
+                            <td>                                
+                                <ul>
+                                    <li>Date: {tcxoCalDetails['end_time'].split('T')[0]}</li>
+                                    <li>Time: {tcxoCalDetails['end_time'].split('T')[1].slice(0, -5)}</li>
+                                </ul>   
+                            </td>
+                            <td>{tcxoCalDetails['status']}</td>
+                            <td>{tcxoCalDetails['details']}</td>  
+                        </tr>                      
                     </tbody>
                 </table>
                 }

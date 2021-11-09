@@ -64,8 +64,18 @@ function ImuCompare(props) {
                                         }
                                     </ul>
                                 </td>
-                                <td>{imu['start_time']}</td>
-                                <td>{imu['end_time']}</td>
+                                <td>
+                                    <ul>
+                                        <li>Date: {imu['start_time'].split('T')[0]}</li>
+                                        <li>Time: {imu['start_time'].split('T')[1].slice(0, -5)}</li>
+                                    </ul>                                  
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>Date: {imu['end_time'].split('T')[0]}</li>
+                                        <li>Time: {imu['end_time'].split('T')[1].slice(0, -5)}</li>
+                                    </ul>  
+                                </td>
                                 {isDetailsFlag && <td>
                                     {imu['details'].map((failReason, i) => (
                                             <li key={i}>{failReason}</li>    

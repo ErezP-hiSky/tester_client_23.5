@@ -395,7 +395,7 @@ table th,
 table td {
   padding: 0.4rem;
   text-align: center;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
 }
 
 table th {
@@ -514,4 +514,12 @@ hr {
 
 .yellow_highlight {
   background-color: #FFFF00
+}
+
+.pfix {
+  position: fixed;
+}
+
+.pabslt {
+  position: absolute;
 }

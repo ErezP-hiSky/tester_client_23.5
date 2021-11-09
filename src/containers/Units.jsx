@@ -71,27 +71,51 @@ function Units() {
 
     function handleClick(e) {
         e.preventDefault();
-        if (searchstate['dateFrom'] > searchstate['dateTo']) {
+        
+        if (searchstate["snFrom"] === 0) {
+            alert("Please fill in the SN From details...")
+        }
+        else if (searchstate["snTo"] === 0) {
+            alert("Please fill in the SN To details...")
+        }
+        else if (searchstate["dateFrom"] === 0) {
+            alert("Please fill in the date From details...")
+        }
+        else if (searchstate["dateTo"] === 0) {
+            alert("Please fill in the date To details...")
+        }
+        else if (searchstate['dateFrom'] > searchstate['dateTo']) {
             alert("--Date To-- is not after --Date From--");
         } else {
-            const snFromindex = options.findIndex((item) => item === searchstate['snFrom']);
-            const snToindex = options.findIndex((item) => item === searchstate['snTo']);
+            var snFromindex = options.findIndex((item) => item === searchstate['snFrom']);
+            var snToindex = options.findIndex((item) => item === searchstate['snTo']);
             setSnLimited( options.slice(snFromindex, snToindex + 1) );
     
             setIsTestsResultsPresented(true); 
         }
     }
 
+    const handleClearClick = (e) => {
+        setIsTestsResultsPresented(false)
+        setSearchstate({
+            "snFrom": 0,
+            "snTo": 0,
+            "dateFrom": 0,
+            "dateTo": 0
+        });
+        setSnLimited(0);
+    }
+
     return (
         <div>
-            <h4 className="units-heading"> Choose range of Serial Number and dates: </h4>
+            <h4 className="lead"> Choose range of Serial Numbers and dates: </h4>
             <div className="form-inline card">
                 
                 <label htmlFor="datefrom">SN From: </label>                                        
                 <select onChange={handleChange}
                     value={searchstate['snFrom']}
                     name="snFrom"
-                    className="drop-down">
+                    className="drop-down" required>
                     {options.length === 1 ?
                         <option value="empty">looking...</option> :
                         options.map((Item, i) => (
@@ -104,7 +128,7 @@ function Units() {
                 <select onChange={handleChange}
                     value={searchstate['snTo']}
                     name="snTo"
-                    className="drop-down">
+                    className="drop-down" required>
                     {options.length === 1 ?
                         <option value="empty">looking...</option> : (
                         snFromValue === 0 ? 
@@ -126,7 +150,7 @@ function Units() {
                     name="dateFrom" 
                     autoComplete="off"
                     id="datefrom"                    
-                    onChange={handleChange}/>
+                    onChange={handleChange} required/>
                     
                 <label className="date-input__label" 
                     htmlFor="dateto">Date To:</label>
@@ -135,7 +159,7 @@ function Units() {
                     name="dateTo" 
                     autoComplete="off"
                     id="dateto"
-                    onChange={handleChange}/>
+                    onChange={handleChange} required/>
                 
                 <div >                    
                     <button type="button" onClick={handleClick}
@@ -143,8 +167,16 @@ function Units() {
                         Search
                     </button>          
                 </div>
+                <div >                    
+                <button type="button" onClick={handleClearClick}
+                    className="p">
+                    Clear
+                </button>          
             </div>
+            </div>
+
             
+        
             {isTestsResultsPresented &&
                 <TestsbySn 
                     searchState= {searchstate}
