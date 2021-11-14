@@ -67,6 +67,14 @@ ul {
   margin-bottom: 1rem;
 }
 
+.small-font {
+  font-size: 1.2rem !important;
+}
+
+.s-height {
+  height: fit-content;
+}
+
 .text-center {
   text-align: center;
 }
@@ -181,6 +189,12 @@ ul {
 .grid-5 {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  grid-gap: 2rem;
+}
+
+.grid-5-1 {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
   grid-gap: 2rem;
 }
 

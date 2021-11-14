@@ -46,7 +46,7 @@ function MacTable() {
                                 macRes.map((item, i) => (
                                     <tr key={i}>
                                         <td>{i+1}</td>
-                                        <td>{item['Mac Address']}</td>
+                                        <td>{item['Mac_Address']}</td>
                                         <td>{item['SN'] && item['SN']}</td>
                                         <td>{item['Note1'] && item['Note1']}
                                             {' '}{item['Note2'] && item['Note2']}</td>

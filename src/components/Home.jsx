@@ -29,6 +29,7 @@ function Home() {
                         This is a very important system also for the technicians because 
                         they need to observe what are the main fails a terminal or terminals are having.
                     </p>
+                    <br/>
                     <h4>
                         If you are new here, please {' '}
                         <Link className="register-text" to="/register">

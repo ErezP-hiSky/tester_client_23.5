@@ -179,7 +179,13 @@ function Results() {
         return (
             <div className="results_wrapper">
                 <div className="results_header results_box">
-                    <p className="m-top-2 ">Unit SN - <strong>{unitSN}</strong> - results page</p>
+                    <div className="grid-5-1">
+                        <p className="m-top-2 ">Unit SN - <strong>{unitSN}</strong> - results page</p>
+                        <a className="btn small-font s-height"
+                            href="/search-options">
+                            <i class="fa fa-home"></i>{' '}Back to Technician Page
+                        </a>
+                    </div>
                     {allRes.length > 1 && <ul>
                             {allRes.map((item, i) => 
                                 <li key={i} className="idFoundBtn">

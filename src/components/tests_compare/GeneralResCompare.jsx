@@ -42,7 +42,12 @@ const GeneralResCompare = (props) => {
                             <td>{generalDataUnit['_id']}</td>
                             <td>{generalDataUnit['unit_SN']}</td>
                             <td>{generalDataUnit['Tester_name']}</td>
-                            <td>{generalDataUnit['Test_Date']}</td>
+                            <td>
+                                <ul>
+                                    <li>Date: {generalDataUnit['Test_Date'].split('T')[0]}</li>
+                                    <li>Time: {generalDataUnit['Test_Date'].split('T')[1].slice(0, -5)}</li>
+                                </ul> 
+                            </td>
                             <td>{generalDataUnit['antenna_type']}</td>
                             <td>{generalDataUnit['product_type']}</td>
                             <td>{generalDataUnit['final_test_result']}</td>

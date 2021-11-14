@@ -108,7 +108,13 @@ function Units() {
 
     return (
         <div>
-            <h4 className="lead"> Choose range of Serial Numbers and dates: </h4>
+            <div className="grid-5-1">
+                <h4 className="lead"> Choose range of Serial Numbers and dates: </h4>
+                <a className="btn small-font s-height"
+                    href="/search-options">
+                    <i className="fa fa-home"></i>{' '}Back to Technician Page
+                </a>
+            </div>
             <div className="form-inline card">
                 
                 <label htmlFor="datefrom">SN From: </label>                                        
