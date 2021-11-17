@@ -59,14 +59,14 @@ function SearchOptionsPage() {
     return (
         <div>
           <div className="tech-search">
-              <div className="tech-box tech-header grid-5-1">
-                <h1> Technician Page </h1>
+              <div className="tech-header grid-5-1">
+                <h3> Technician Page </h3>
                 <a className="btn small-font s-height"
                     href="/search-options">
                     <i className="fa fa-home"></i>{' '}Back to Technician Page
                 </a>
               </div>
-              <div className="tech-box sidebar back-grey">
+              <div className="hide-btns tech-box tech-box__sidebar sidebar back-black">
                 <button type="button" onClick={() => hideComponent("showTechPage")} className="search-button">
                   Serial number
                 </button>              

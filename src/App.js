@@ -6,7 +6,7 @@ import {
 import Header from './components/Header.jsx';
 import Nav from './components/Nav.jsx';
 import Home from './components/Home.jsx';
-import Management from './containers/Management.jsx';
+// import Management from './containers/Management.jsx';
 // import Register from './containers/Register.jsx';
 import Results from './containers/ResultsContainer.jsx';
 import Units from './containers/Units.jsx';
@@ -46,7 +46,7 @@ const App = () => {
               <Alerts />
               <Switch>
                 <Route exact path="/" component={Home} />
-                <Route exact path="/management" component={Management} />
+                {/* <Route exact path="/management" component={Management} /> */}
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
                 <PrivateRoute exact path="/search-options" component={SearchOptionsPage} />
                 {/* <Route exact path="/register" >

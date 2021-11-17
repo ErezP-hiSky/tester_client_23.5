@@ -179,11 +179,12 @@ function Results() {
         return (
             <div className="results_wrapper">
                 <div className="results_header results_box">
-                    <div className="grid-5-1">
+                    <img className="gear-img" src={gear} alt="result-gear"/>
+                    <div className="grid-5-1">                    
                         <p className="m-top-2 ">Unit SN - <strong>{unitSN}</strong> - results page</p>
                         <a className="btn small-font s-height"
                             href="/search-options">
-                            <i class="fa fa-home"></i>{' '}Back to Technician Page
+                            <i className="fa fa-home"></i>{' '}Back to Technician Page
                         </a>
                     </div>
                     {allRes.length > 1 && <ul>
@@ -197,11 +198,11 @@ function Results() {
                             )}                    
                         </ul>}
                 </div>
-                <div className="results_sidebar back-black">    
-                    <img className="gear-img" src={gear} alt="result-gear"/>
-                    <div className="hide-btns">
+                <div className="results_sidebar back-black unit_sidebar">  
+                    <div className="hide-btns lead">
+                        <p className="c-white">Tests list:</p>
                         <button onClick={() => hideComponent("showTest1")}>
-                            <span>general test details</span>
+                            <span>general details</span>
                         </button>
                         <button onClick={() => hideComponent("showTest2")}>
                             <span>Ambient Temperature</span>
@@ -213,13 +214,13 @@ function Results() {
                             <span>Manufacturer Details</span>
                         </button>
                         <button onClick={() => hideComponent("showTest5")}>
-                            <span>User input in ui & MAC</span>
+                            <span>User input & MAC</span>
                         </button>
                         <button onClick={() => hideComponent("showTest6")}>
                             <span>Led status</span>
                         </button>
                         <button onClick={() => hideComponent("showTest7")}>
-                            <span>PIC version</span>
+                            <span>PIC Version</span>
                         </button>
                         <button onClick={() => hideComponent("showTest8")}>
                             <span>Ping Status</span>
@@ -231,7 +232,7 @@ function Results() {
                             <span>Temperature Test</span>
                         </button>
                         <button onClick={() => hideComponent("showTest11")}>
-                            <span>temperature changes</span>
+                            <span>Temperature changes</span>
                         </button>
                         <button onClick={() => hideComponent("showTest12")}>
                             <span>Imu limits</span>
@@ -240,7 +241,7 @@ function Results() {
                             <span>Tcxo Calibration</span>
                         </button>
                         <button onClick={() => hideComponent("showTest14")}>
-                            <span>p1db </span>
+                            <span>P1dB </span>
                         </button>
                         <button onClick={() => hideComponent("showTest20")}>
                             <span>GPS </span>
@@ -252,10 +253,10 @@ function Results() {
                             <span>Full Link UpLink</span>
                         </button>
                         <button onClick={() => hideComponent("showTest17")}>
-                            <span>Full Link cross poll</span>
+                            <span>Cross Poll</span>
                         </button>
                         <button onClick={() => hideComponent("showTest18")}>
-                            <span>Full Link General Results</span>
+                            <span>Full Link General</span>
                         </button>
 
                         <button onClick={() => hideComponent("showTest19")}>
@@ -264,7 +265,7 @@ function Results() {
                     </div>
                 </div>
                 <div className="results_content results_box">
-                    <h2>The Results are: </h2>
+                    <h3>The Results are: </h3>
                     
                     {showTest1 &&
                     <GeneralTestDataRes 

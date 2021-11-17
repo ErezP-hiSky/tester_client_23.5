@@ -68,7 +68,7 @@ ul {
 }
 
 .small-font {
-  font-size: 1.2rem !important;
+  font-size: 1rem !important;
 }
 
 .s-height {
@@ -99,6 +99,27 @@ ul {
   text-align: left;
 }
 
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 100%;
+  margin-bottom: 5rem;
+  font-size: 1.2rem;
+}
+
+.pagination button {
+  color: blue ;
+  float: left;
+  padding: 4px 8px ;
+  text-decoration: none;
+  border: 1px solid #ddd; /* Gray */
+  margin: 0 ;   
+  &:visited {
+    background-color: steelblue;
+  }
+}
 /* Cards */
 .card {
   padding: 1rem;

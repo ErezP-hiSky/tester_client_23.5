@@ -67,7 +67,7 @@ function P1dbCompare(props) {
 
     return (
         <div className="test-table test-table--p1db"> 
-        {isDataFlag ? 
+        {isDataFlag && 
             <table className="results-table results-table--p1db">
                 <thead>
                     <tr>
@@ -125,7 +125,7 @@ function P1dbCompare(props) {
                     </tr>
                 </tbody>
             </table>
-            : <p className="test-table__p">id {props.idToShow} p1db results is empty</p>}
+            }
         </div>
         );
 }

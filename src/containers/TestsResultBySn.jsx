@@ -121,28 +121,29 @@ function TestsbySn(props) {
             <div className="results_wrapper">
                 <h3 className="results_header units-heading results_box">Tests result by serial number :</h3>
                 <div className="results_sidebar back-black hide-btns">
+                    <p className="c-white lead">Test to Compare</p>
                     {
                         firstPrepRes && 
                         <button  onClick={() => hideComponent("show_firstPrep_Test")} >
-                            <span>firstPrep compare</span>
+                            <span>firstPrep</span>
                         </button>
                     }
                     {
                         imuGpsRes && 
                         <button onClick={() => hideComponent("show_IMU_Test")} >
-                            <span>Imu compare </span>
+                            <span>Imu </span>
                         </button>
                     }
                     {
                         TcxoCalRes && 
                         <button onClick={() => hideComponent("show_Tcxo_Test")} >
-                            <span>Tcxo Calibration compare</span>
+                            <span>Tcxo Calibration</span>
                         </button>
                     }
                     {
                         p1dbRes && 
                         <button onClick={() => hideComponent("show_p1dB_Test")} >
-                            <span>p1db compare </span>
+                            <span>p1db </span>
                         </button>
                     }
                     {
@@ -154,19 +155,19 @@ function TestsbySn(props) {
                     {
                         fulLinkRes &&
                         <button onClick={() => hideComponent("show_fullLink_Test")} >
-                            <span>full - link compare </span>
+                            <span>full - link </span>
                         </button>
                     }
                     {
                         crossPollRes && 
                         <button onClick={() => hideComponent("show_crossPoll_Test")} >
-                            <span>Cross Poll compare</span>
+                            <span>Cross Poll</span>
                         </button>
                     }
                     {
                         generalRes && 
                         <button onClick={() => hideComponent("show_General_Test")} >
-                            <span>General Result compare</span>
+                            <span>General Result</span>
                         </button>
                     }
                     <button onClick={() => hideComponent("clear_page")} >

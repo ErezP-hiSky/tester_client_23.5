@@ -12,6 +12,25 @@
 .results_sidebar {
     grid-area: sidebar;
     margin-bottom: 2rem;
+    height: 60%;
+    width: 20%;
+    position: fixed;
+    z-index: 1;
+    top: 25rem;
+    left: -6rem;
+    background-color: #111;
+    overflow-x: hidden;
+    padding: 2rem 0;
+}
+
+.unit_sidebar {
+    height: 70%;
+    width: 25%;
+    left: 0;
+}
+
+.c-white{
+    color: snow;
 }
 
 .results_content {
@@ -39,8 +58,7 @@
     
     & button {
         border: 2px solid #0f0944;
-        height: 3rem;
-        width: 25rem;
+        width: 85%;
         text-align: center;
         text-decoration: none;
         display: inline-block;

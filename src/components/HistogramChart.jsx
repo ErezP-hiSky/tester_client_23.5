@@ -3,7 +3,7 @@ import ReactApexChart from 'react-apexcharts';
 import '../sass/main.scss';
 
 
-function HistogramChart({ categories, dataCounted }) {
+function HistogramChart({ categories, dataCounted, histTitle, histExplain }) {
  
   //data: [44, 55, 41, 67, 22, 43, 21, 33, 45, 31]
   // chart options
@@ -79,9 +79,9 @@ function HistogramChart({ categories, dataCounted }) {
     return (
         <div >           
             <div className="column-chart">
-                <h2>Fail Distribution</h2>
-                <ReactApexChart options={options} series={series} type="bar" height={350} width={650} />
-                <p className="lead">This histogram show how many terminals fail for each test.</p>
+              <h5>{histTitle}</h5>                
+              <ReactApexChart options={options} series={series} type="bar" height={300} width={400} />
+              <p className="lead">{histExplain}</p>
             </div>            
         </div>
     );

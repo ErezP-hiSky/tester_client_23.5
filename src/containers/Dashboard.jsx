@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import FilterDashboard from '../components/FilterDashboard';
+import LastSeen from '../components/LastSeen';
 import Spinner from '../components/layout/Spinner';
 
 function Dashboard() {
@@ -109,6 +110,8 @@ function Dashboard() {
                 <FilterDashboard
                     manageSearch={manageSearch}                    
                     sendRefresh={sendRefresh} />
+                <LastSeen />
+                <br/>
             </div>
         );
     }

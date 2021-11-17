@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import HistogramChart from './HistogramChart';
 import Spinner from './layout/Spinner';
+import NumberOfTerminalsLastWeek from './NumberOfTerminalsLastWeek';
 import PieChart from './PieChart';
 
 function FilterDashboard({manageSearch, sendRefresh}) {
@@ -57,11 +58,14 @@ function FilterDashboard({manageSearch, sendRefresh}) {
                     <PieChart 
                         failUnits={failUnits.length}
                         passUnits={passUnits.length}
-                    />
+                    />                    
                     <HistogramChart
                         categories={testsNames}
                         dataCounted={testsFailedCount}
+                        histTitle={'Fail Distribution'}
+                        histExplain={'This histogram show how many terminals fail for each test.'}
                     />
+                    <NumberOfTerminalsLastWeek />
                 </div>
             </div>
         )

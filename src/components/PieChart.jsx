@@ -41,8 +41,8 @@ function PieChart({ failUnits, passUnits }) {
     return (
         <div >
             <div className="pie-chart">
-                <h2>Pass / Fail status</h2>
-                <ReactApexChart options={pieOptions} series={pieSeries} type="donut" width={480} />
+                <h5>Pass / Fail status</h5>
+                <ReactApexChart options={pieOptions} series={pieSeries} type="donut" width={380} />
                 <p className="lead">This pie chart show the relation between fail and pass terminals .</p>
             </div>
         </div>

@@ -66,7 +66,7 @@ function AskMac() {
                 </div>
             </form>
             <br/>
-            <div className="card p m-1">
+            <div className="tech-container">
                 <label className="m-1">Your MAC is:</label>
                 <label className="m-1 p back-sky">{mac}</label>
             </div>

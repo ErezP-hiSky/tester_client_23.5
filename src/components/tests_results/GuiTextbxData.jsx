@@ -24,10 +24,22 @@ function GuiDataRes({resultId}) {
     } else {
         return (
             <div  >
-                <h3> Data user input in ui & MAC Details </h3>
+                <h5> Data user input in ui & MAC Details </h5>
                 <table className="cur-cons-table">
                     <tbody>
                         {Object.keys(guiDetails).map((item, i) => 
+                            item === "_id" ?
+                            <tr key={i*1}>
+                                <td >ID</td>                            
+                                <td >{guiDetails[item]}</td>                            
+                            </tr>
+                            :
+                            item === "SN" ?
+                            <tr key={i*1}>
+                                <td >Serial Number</td>                            
+                                <td >{guiDetails[item]}</td>                            
+                            </tr>
+                            :
                             <tr key={i*1}>
                                 <td >{item}</td>                            
                                 <td >{guiDetails[item]}</td>                            

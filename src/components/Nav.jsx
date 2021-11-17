@@ -30,7 +30,9 @@ function Nav() {
   );
 
   const onLogout = () => {
-    logout();
+    if (window.confirm('Are you sure to logout ?')) {
+      logout();
+    }
   }
 
   const authLinks = (
