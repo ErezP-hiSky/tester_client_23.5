@@ -120,6 +120,14 @@ ul {
     background-color: steelblue;
   }
 }
+
+.color-pass {
+  background-color: greenyellow;
+}
+
+.color-fail {
+  background-color: red;
+}
 /* Cards */
 .card {
   padding: 1rem;
@@ -414,7 +422,7 @@ button {
 }
 
 .form-container {
-  max-width: 500px;
+  max-width: 55rem;
   margin: 2rem auto;
   overflow: hidden;
   padding: 0 2rem;

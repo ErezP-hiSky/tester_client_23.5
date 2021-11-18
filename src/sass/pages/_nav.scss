@@ -3,7 +3,10 @@
 /* Add a black background color to the top navigation */
 .topnav {
   background-color: #333;
-  overflow: hidden;  
+  overflow: hidden; 
+  display: flex; 
+  flex-flow: row wrap;
+  z-index: 10;
 }
 
 /* Style the links inside the navigation bar */
@@ -28,7 +31,8 @@
 }
 
 /* Add a color to the active/current link */
-.topnav .nav-style.active {
+.topnav .nav-style:focus {
   background-color: #04AA6D;
   color: white;
 }
+

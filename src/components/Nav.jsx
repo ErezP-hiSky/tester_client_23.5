@@ -26,6 +26,7 @@ function Nav() {
       <Link className="nav-style" to="/login">
           Login
       </Link>
+      
     </Fragment>
   );
 
@@ -61,7 +62,7 @@ function Nav() {
   
 
   return (
-    <div className="topnav">
+    <div className="topnav" id="myTopnav">
         { isAuthenticated ? authLinks : guestLinks }        
     </div>
   );

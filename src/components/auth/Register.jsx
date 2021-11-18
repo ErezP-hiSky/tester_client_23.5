@@ -57,7 +57,7 @@ function Register(props) {
     }
 
     return (
-        <div>
+        <div className='form-container'>
             <h1>
                 Account <span className="text-primary">Register</span>
             </h1>

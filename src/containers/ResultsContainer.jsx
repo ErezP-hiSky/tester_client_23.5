@@ -25,6 +25,7 @@ import P1dbPwrGraph from '../components/tests_results/p1dbPwrRes.jsx';
 import Spinner from '../components/layout/Spinner';
 import axios from 'axios';
 import GpsResult from '../components/tests_results/GpsResult';
+import TestUnitSumarize from '../components/tests_results/TestUnitSumarize';
 
 
 function Results() {
@@ -55,6 +56,7 @@ function Results() {
 
     const [state, setState] = useState({
         name: "React",
+        showSumarize: true,
         showTest1: false,
         showTest2: false,
         showTest3: false,
@@ -148,6 +150,7 @@ function Results() {
     }
 
     const {
+        showSumarize,
         showTest1,
         showTest2,
         showTest3,
@@ -266,7 +269,12 @@ function Results() {
                 </div>
                 <div className="results_content results_box">
                     <h3>The Results are: </h3>
-                    
+
+                    {showSumarize &&
+                    <TestUnitSumarize 
+                        resultId={idFound}
+                    />}
+
                     {showTest1 &&
                     <GeneralTestDataRes 
                         resultId={idFound}

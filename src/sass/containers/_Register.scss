@@ -1,10 +1,11 @@
 .LoginForm {
-    width: 40rem;
+    width: 80%;
     padding: 1rem;
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -10%);
+    margin: 0 auto;
+    // position: absolute;
+    // top: 40%;
+    // left: 50%;
+    // transform: translate(-50%, -10%);
     // background: #e28f8f67;
     text-align: center;
     border-radius: 5px;
@@ -21,7 +22,7 @@
     text-align: center;
     border: 2px solid #3498db;
     padding: 0.7rem 0.5rem;
-    width: 20rem;
+    width: 60%;
     outline: none;
     color: $button-color;
     font-size: $default-font-size;
@@ -32,7 +33,7 @@
   & input[type="text"]:focus,
   & input[type="email"]:focus,
   & input[type="password"]:focus {
-    width: 28rem;
+    width: 80%;
     border-color: $register-green;
   }
   

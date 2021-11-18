@@ -117,7 +117,8 @@ function TechByTest() {
     <div className="tech-container" >
       <h3 className="header">Choose tests</h3>
         
-        <form className="searchSN-form" action="/search" method="POST">
+        <form className="searchSN-form" action="/search" method="POST"
+          onSubmit={handleClick}>
           
             <div className="tests-input">
             
@@ -214,7 +215,7 @@ function TechByTest() {
             <br />           
           
           <div>
-            <button type="button" onClick={handleClick} className="search-button">
+            <button type="submit" className="search-button">
               Search
             </button>          
           </div>

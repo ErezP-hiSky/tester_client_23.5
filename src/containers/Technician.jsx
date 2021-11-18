@@ -13,7 +13,7 @@ function TechPage() {
 
   const handleChange = (e) => setState({[e.target.name]: e.target.value});
 
-  function handleClick (e) {
+  function handleSubmit (e) {
     e.preventDefault()
     history.push({
       pathname: '/results',
@@ -28,7 +28,8 @@ function TechPage() {
   return (
     <div className="tech-container" >      
       <h3 className="header-sub"> Search by Serial Number: </h3>
-        <form className="searchSN-form" action="/search" method="POST">
+        <form className="searchSN-form" action="/search" method="POST"
+          onSubmit={handleSubmit}>
           <div className="search-fields">            
           <br />
            <div className="name-input">
@@ -41,7 +42,7 @@ function TechPage() {
                 onChange={handleChange}/>
           </div>
           <br/>
-            <button type="button" onClick={handleClick} className="search-button">
+            <button type="submit"  className="search-button">
               Search
             </button>          
           </div>

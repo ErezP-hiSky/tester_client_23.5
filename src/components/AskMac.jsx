@@ -1,31 +1,49 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import AlertContext from '../context/alert/alertContext';
 
 function AskMac() {
     const [name, setName] = useState('');
     const [serialNumber, setSerialNumber] = useState('');
     const [description, setDescription] = useState('');
+    const [allSN, setAllSN] = useState([]);
     const [mac, setMac] = useState('');
 
-    
+    const alertContext = useContext(AlertContext);
+    const { setAlert } = alertContext;
+
+    const getAllSN = async () => {
+        const {data} = await axios.get('/general-test-data');
+        
+        const allsnArr = []
+        data.forEach((item) => {
+            if (!allsnArr.includes(item['unit_SN'])) {
+                allsnArr.push(item['unit_SN']);                            
+            }                        
+        });
+        allsnArr.sort();
+        // console.log(allsnArr)
+        setAllSN(allsnArr);
+    }
     const submitHandler = async (e) => {
         e.preventDefault();
+        getAllSN();
         // give MAC address        
         const mac_not_taken = await axios.get('/api/mac/get_new_mac');
-        const mac_to_take = mac_not_taken.data['Mac_Address']
-        if (serialNumber.length < 14) {
-            alert('Serial Number is too short.\nNo MAC was given.')
+        const mac_to_give = mac_not_taken.data['Mac_Address']
+        if (allSN.includes(serialNumber)) {
+            setAlert('Serial Number already exist.\nNo MAC was given.', 'danger')
         } else {
             const new_mac = {            
                 SN: serialNumber,
                 Note1: description,
                 Name: name            
             } 
-            await axios.put(`/api/mac/update_mac/${mac_to_take}`, new_mac);        
+            await axios.put(`/api/mac/update_mac/${mac_to_give}`, new_mac);        
             setName('');
             setSerialNumber('');
             setDescription('');
-            setMac(mac_to_take);
+            setMac(mac_to_give);
         }
     }
     
