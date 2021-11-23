@@ -27,6 +27,7 @@ function TestsbySn(props) {
     const snLength = props.allSN.length - 1;
     const date_from = props.searchState.dateFrom;
     const date_to = props.searchState.dateTo;
+    const passfail = props.searchState.passfail;
     
     const [testsBySNdate, setTestsBySNdate] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -36,7 +37,8 @@ function TestsbySn(props) {
             // console.log(snLimited)
             setLoading(true);
             const res = await axios.get(`/general-test-data/findbyUnitSNrangeNdate/` +
-                        `${snLimited[0]}/${snLimited[snLength]}/dateFrom/${date_from}/dateTo/${date_to}`);
+                        `${snLimited[0]}/${snLimited[snLength]}/dateFrom/${date_from}/` + 
+                        `dateTo/${date_to}/passfail/${passfail}`);
             setTestsBySNdate(res.data);
             setLoading(false);
         };

@@ -10,6 +10,7 @@ function Units() {
     const [allsn, setAllsn] = useState([]);
     const [isTestsResultsPresented, setIsTestsResultsPresented] = useState(false);
     const [snFromValue, setSnFromValue] = useState(0);
+    const [isMulti, setIsMulti] = useState(false);
 
     useEffect(() => {
         const abortController = new AbortController();
@@ -49,7 +50,9 @@ function Units() {
         "snFrom": 0,
         "snTo": 0,
         "dateFrom": 0,
-        "dateTo": 0
+        "dateTo": 0,
+        "passfail": 'all',
+        "multipleSN": []
     });
     const [snLimited, setSnLimited] = useState(0);
     
@@ -101,7 +104,8 @@ function Units() {
             "snFrom": 0,
             "snTo": 0,
             "dateFrom": 0,
-            "dateTo": 0
+            "dateTo": 0,
+            "passfail": 'all'
         });
         setSnLimited(0);
     }
@@ -116,7 +120,8 @@ function Units() {
                 </a>
             </div>
             <div className="form-inline card">
-                
+            {!isMulti &&
+            <>
                 <label htmlFor="datefrom">SN From: </label>                                        
                 <select onChange={handleChange}
                     value={searchstate['snFrom']}
@@ -129,8 +134,7 @@ function Units() {
                     ))}
                 </select>
                 
-                <label htmlFor="datefrom">SN To :</label>
-                
+                <label htmlFor="datefrom">SN To :</label>                
                 <select onChange={handleChange}
                     value={searchstate['snTo']}
                     name="snTo"
@@ -148,8 +152,27 @@ function Units() {
                         )
                     )}
                 </select>
-
-
+            </>}
+                <div className="p">                    
+                    <input type="checkbox" id="isMulti"
+                        value="is Multiple?" name="isMulti"
+                        onChange={(e) => setIsMulti(e.target.checked)} />
+                    <label htmlFor="isMulti">is Multiple SN? </label>  
+                </div>
+                {isMulti &&
+                <>
+                    <label htmlFor="multipleSN">Multiple SN: </label>                                        
+                    <select onChange={handleChange}                    
+                        name="multipleSN" multiple
+                        className="drop-down high-box" required>
+                        {options.length === 1 ?
+                            <option value="empty">looking...</option> :
+                            options.map((Item, i) => (
+                            <option key={i} value={Item}>{Item}</option>
+                        ))}
+                    </select>
+                </>
+                }
                 <label htmlFor="datefrom">Date From:</label>
                 <input 
                     type="date"
@@ -167,7 +190,18 @@ function Units() {
                     id="dateto"
                     onChange={handleChange} required/>
                 
-                <div >                    
+                <label htmlFor="passfail">Pass / Fail: </label>                                        
+                <select onChange={handleChange}
+                    value={searchstate['passfail']}
+                    name="passfail"
+                    className="drop-down" >
+                        <option value='all'>All</option>
+                        <option value='onlyFail'>Only Fail</option>
+                        <option value='onlyPass'>Only Pass</option>
+                </select>         
+
+                <div >   
+                        
                     <button type="button" onClick={handleClick}
                         className="p">
                         Search
